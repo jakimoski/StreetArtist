@@ -1,0 +1,35 @@
+@use "../abstracts/" as *;
+@use "sass:math";
+
+.btn {
+  color: $color-white;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  padding: 6.5px 17.5px;
+  cursor: pointer;
+  &--primary {
+    background-color: $color-primary;
+  }
+  &--secondary {
+    background-color: $color-secondary;
+  }
+  &--blue {
+    background-color: $color-blue;
+  }
+  &--light {
+    background-color: $background-light;
+    color: $color-primary;
+  }
+  &--green {
+    background-color: $color-green;
+  }
+  &:hover {
+    scale: 1.01;
+  }
+}

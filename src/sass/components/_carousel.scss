@@ -1,0 +1,92 @@
+@use "../abstracts/" as *;
+@use "sass:math";
+
+.carousel {
+  position: relative;
+  padding: 120px 0px;
+  overflow: hidden;
+  width: 100%;
+  min-height: 35vh;
+  &__prev,
+  &__next {
+    cursor: pointer;
+    padding: 10px 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    z-index: 10;
+    border: none;
+    background-color: transparent;
+    @include screenSize(phone) {
+      padding: 5px 10px;
+    }
+  }
+  &__prev {
+    left: 0;
+  }
+  &__next {
+    right: 0;
+  }
+
+  &-item {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 1s ease;
+    &__left {
+      width: 300px;
+      padding-right: 20px;
+      @include screenSize(phone) {
+        padding-right: 10px;
+      }
+    }
+    &__right {
+      width: 300px;
+      color: $color-primary;
+      padding-left: 20px;
+      @include screenSize(phone) {
+        padding-left: 10px;
+      }
+    }
+    &__divider {
+      height: 180px;
+      width: 1px;
+      background-color: $color-primary;
+    }
+  }
+  &-card {
+    background: $background-dark;
+    padding: 50px 10px 10px 10px;
+    text-align: center;
+    color: $color-white;
+    position: relative;
+    &__image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      top: -50%;
+      object-fit: cover;
+      transform: translate(-50%, 0%);
+      border: 2px solid $color-primary;
+      @include screenSize(phone) {
+        width: 75px;
+        height: 75px;
+        top: -20%;
+      }
+    }
+  }
+}

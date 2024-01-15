@@ -1,0 +1,6 @@
+@use "../abstracts/" as *;
+@use "sass:math";
+
+body {
+  font-family: $font-family-primary;
+}

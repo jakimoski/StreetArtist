@@ -1,0 +1,268 @@
+@use "../abstracts/" as *;
+@use "sass:math";
+// Main wrapper for the pages
+.page {
+  display: none;
+  min-height: 100vh;
+  padding-top: 100px;
+  background-color: $background-light;
+  overflow: hidden;
+}
+// Landing Page
+#landingPage {
+  .main-wrapper {
+    // min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .logo {
+      padding: 0 0 rem-calc(53) 0;
+    }
+  }
+
+  .polygons-wrapper {
+    position: relative;
+    height: rem-calc(392);
+    width: rem-calc(260);
+  }
+
+  .join {
+    position: absolute;
+    transition: all 0.1s;
+
+    &:hover {
+      position: absolute;
+      filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.25));
+      z-index: 10;
+    }
+    &--visitor {
+      bottom: 0;
+    }
+    &__content {
+      position: absolute;
+      height: rem-calc(276);
+      width: rem-calc(260);
+      display: flex;
+      justify-content: center;
+      transition: all ease-in-out 0.3s;
+      cursor: pointer;
+      p {
+        font-family: "Reenie Beanie", cursive;
+        font-weight: 500;
+        font-size: 45px;
+      }
+      &:hover {
+        -moz-transform: scale(1.05) translate(0px, -5px);
+        -webkit-transform: scale(1.05) translate(0px, -5px);
+        -o-transform: scale(1.05) translate(0px, -5px);
+        -ms-transform: scale(1.05) translate(0px, -5px);
+        transform: scale(1.05) translate(0px, -5px);
+      }
+      &--artist {
+        top: 0;
+        -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 45%);
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 45%);
+        background-color: $background-normal;
+        .artist-wrapper {
+          position: absolute;
+          top: rem-calc(60);
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+        }
+        p {
+          color: $color-primary;
+        }
+      }
+      &--visitor {
+        bottom: 0;
+        -webkit-clip-path: polygon(0 0, 100% 55%, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 100% 55%, 100% 100%, 0 100%);
+        background-color: $color-primary;
+        p {
+          position: absolute;
+          bottom: rem-calc(45);
+          color: $background-normal;
+        }
+      }
+    }
+  }
+}
+
+#artist-select {
+  width: rem-calc(95);
+  height: rem-calc(30);
+  border-radius: 2px;
+  background: none;
+  border: 1px solid $color-primary;
+  color: $color-primary;
+  font-weight: 300;
+  font-size: 13px;
+  outline: none;
+  transition: all 0.03s ease;
+  cursor: pointer;
+  option {
+    cursor: pointer;
+    text-align: left;
+    &:first-child {
+      text-align: center;
+    }
+  }
+}
+
+// Visitor Home Page
+.visitor-home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &-cta {
+    background: url("./src/assets/Bricks.png") center no-repeat;
+    background-size: cover;
+    min-height: 20vh;
+    padding: rem-calc(20);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    &__title {
+      color: $color-primary;
+      font-family: Roboto;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+}
+
+// visitorListing
+#visitorListing {
+  background-color: $background-normal;
+  position: relative;
+}
+#vistorListingCardContainer {
+  display: flex;
+  gap: $gutter-base;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: $gutter-base-l;
+  @include screenSize(phone) {
+    padding: $gutter-base 0;
+  }
+}
+
+.filter-icon {
+  position: fixed;
+  width: rem-calc(65);
+  right: rem-calc(18);
+  bottom: rem-calc(18);
+  cursor: pointer;
+}
+.filter-form {
+  background-color: $color-primary;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  padding-top: $gutter-base-xl;
+}
+
+// Artist Home Page
+
+.artist-home {
+  background-color: $background-normal;
+  &-total {
+    display: flex;
+    padding: $gutter-base;
+    align-items: center;
+    justify-content: space-between;
+    color: $color-white;
+    text-align: center;
+    h4 {
+      font-family: Roboto;
+      font-size: 18px;
+      font-weight: 300;
+    }
+    p {
+      font-family: Roboto;
+      font-size: 48px;
+      font-weight: 500;
+    }
+    &__sold {
+      background-color: $color-primary;
+      flex-basis: 45%;
+      padding: $gutter-base-s;
+    }
+    &__income {
+      background-color: $color-primary;
+      flex-basis: 45%;
+      padding: $gutter-base-s;
+    }
+  }
+  &-chart {
+    background-color: $background-light;
+    padding: $gutter-base-l $gutter-base;
+    h2 {
+      font-family: Roboto;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 300;
+      color: $color-primary;
+      margin-bottom: $gutter-base;
+    }
+    &__select {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: $gutter-base-l;
+    }
+  }
+}
+
+// Artist items
+#artistsItems {
+  background-color: $background-normal;
+}
+.artist-items-container {
+  display: flex;
+  gap: $gutter-base;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: $gutter-base-l;
+  @include screenSize(phone) {
+    padding: $gutter-base 0;
+  }
+}
+
+.add-new-item {
+  display: flex;
+  gap: $gutter-base;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: $gutter-base;
+
+  background-color: $background-light;
+  margin-bottom: $gutter-base;
+  @include screenSize(phone) {
+    padding: $gutter-base 0;
+  }
+  &__btn {
+    width: 80%;
+    color: $color-primary;
+    border: 2px dashed $color-primary;
+    padding: $gutter-base-l $gutter-base-xl;
+    background: none;
+    text-align: center;
+    cursor: pointer;
+    @include screenSize(phone) {
+      width: 95%;
+      padding: $gutter-base $gutter-base-l;
+    }
+  }
+}

@@ -1,0 +1,122 @@
+@use "../abstracts/" as *;
+@use "sass:math";
+
+.listing-card {
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  @include flex-basis("33.33%", m);
+  @include screenSize(tablet) {
+    flex-basis: 100%;
+  }
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+  &__content {
+    padding: rem-calc(18);
+  }
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: rem-calc(10);
+  }
+  &__artist {
+    font-family: Reenie Beanie;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+  }
+  &__price {
+    padding: 3px 8px;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    font-family: Roboto;
+    font-size: 12px;
+    &--light {
+      color: $color-primary;
+      background-color: $background-light;
+    }
+    &--dark {
+      color: $background-light;
+      background-color: $color-primary;
+    }
+  }
+  &__title {
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+  }
+  &__desc {
+    font-family: Roboto;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  &--dark {
+    background-color: $color-primary;
+    color: $background-light;
+  }
+  &--light {
+    background-color: $background-light;
+    color: $color-primary;
+  }
+}
+
+.artist-item-card {
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  @include flex-basis("33.33%", m);
+  @include screenSize(tablet) {
+    flex-basis: 100%;
+  }
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+  &__content {
+    padding: rem-calc(18);
+    background-color: $background-light;
+  }
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: rem-calc(10);
+  }
+  &__artist {
+    font-family: Reenie Beanie;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+  }
+  &__price {
+    padding: 3px 8px;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    font-family: Roboto;
+    font-size: 12px;
+    color: $background-light;
+    background-color: $color-primary;
+  }
+  &__title {
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+  }
+  &__desc {
+    font-family: Roboto;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  &__action {
+    padding: $gutter-base;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: $color-primary;
+  }
+}

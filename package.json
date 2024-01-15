@@ -1,0 +1,14 @@
+{
+  "name": "street-artist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "watch:sass": "sass src/sass/main.scss main.css -w"
+  },
+  "author": "Vlatko Jakimoski",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.69.7"
+  }
+}

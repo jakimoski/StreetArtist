@@ -1,0 +1,233 @@
+@use "./variables" as *;
+@use "sass:math";
+
+// MEDIA QUERY MANAGER
+//////////////////////
+// 0 - 480PX:      PHONE
+// 480 - 768PX:    TABLET
+// 768 - 1024PX:    LAPTOP
+// 1024 - 1800PX: IS WHERE OUR NORMAL STYLES APPLY
+// 1800PX + :      BIG DESKTOP
+
+// $BREAKPOINT ARGUEMENT CHOICES:
+// - PHONE
+// - TABLET
+// - LAPTOP
+// - BIG-DESKTOP
+
+// 1EM = 16PX
+@mixin screenSize($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 30em) {
+      @content;
+    } //480px
+  }
+  @if $breakpoint == tablet {
+    @media only screen and (max-width: 48em) {
+      @content;
+    } //768px
+  }
+  @if $breakpoint == laptop {
+    @media only screen and (max-width: 64em) {
+      @content;
+    } //1024px
+  }
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } //1800px
+  }
+}
+//END OF MEDIA QUERY MANAGER
+//////////////////////
+
+// FLEX BASIS AND GAP
+// /////////////////////
+// MAP FOR FLEX BASIS PERCENTAGES
+$flex-basis-percentages: (
+  "25%": 25%,
+  "33.33%": 33.33%,
+  "50%": 50%,
+  "100%": 100%,
+);
+// MAP FOR GUTTER SIZES
+$gutter-sizes: (
+  s: $gutter-base-s,
+  m: $gutter-base,
+  l: $gutter-base-l,
+);
+// MAP FOR THE NUMBER OF FLEX ITEMS BASED ON FLEX-BASIS-PERCENTAGES
+$flex-items: (
+  "25%": 4,
+  "33.33%": 3,
+  "50%": 2,
+  "100%": 1,
+);
+
+// MIXIN FOR FLEX-BASIS AND GUTTER
+@mixin flex-basis($flex-basis, $gutter-size: null) {
+  $num-items: map-get($flex-items, $flex-basis);
+  $gutter-width: if($gutter-size, map-get($gutter-sizes, $gutter-size), 0);
+  $total-gutter: math.div($gutter-width * ($num-items - 1), $num-items);
+  $flex-basis-value: if(
+    $gutter-size,
+    calc(#{$flex-basis} - #{$total-gutter}),
+    $flex-basis
+  );
+  flex-basis: #{$flex-basis-value};
+}
+// END OF FLEX BASIS AND GAP
+// ////////////////////////////
+
+// CENTER ABSOLUTE
+// /////////////////////
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+%wrap {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  @include screenSize(laptop) {
+    width: 85%;
+  }
+  @include screenSize(tablet) {
+    width: 90%;
+  }
+}
+
+// CUSTOM TYPOGRAPHY MIXINS
+///////////////////
+// FONT SIZES MAP
+$font-size-map: (
+  xl-7: rem-calc(120),
+  xl-6: rem-calc(90),
+  xl-5: rem-calc(70),
+  xl-4: rem-calc(48),
+  xl-3: rem-calc(36),
+  xl-2: rem-calc(24),
+  xl-1: rem-calc(22),
+  xl: rem-calc(18),
+  lg: rem-calc(16),
+  md: rem-calc(14),
+  sm: rem-calc(12),
+  xs: rem-calc(10),
+);
+// FONT LINE HEIGHT MAP
+$font-line-height-map: (
+  xl: 1.4,
+  lg: 1.3,
+  md: 1.2,
+  sm: 1.1,
+);
+// FONT WEIGHT MAP
+$font-weight-map: (
+  bold: 700,
+  semi-bold: 500,
+  regular: 400,
+  light: 300,
+);
+// FONT SIZES AND LINE HEIGHT MAP
+$font-size-line-height-map: (
+  xl-7: "md",
+  xl-6: "md",
+  xl-5: "md",
+  xl-4: "md",
+  xl-3: "lg",
+  xl-2: "lg",
+  xl-1: "lg",
+  xl: "xl",
+  lg: "xl",
+  md: "xl",
+  sm: "xl",
+  xs: "xl",
+);
+// BASE TYPOGRAPHY MIXIN
+@mixin typography($size, $weight) {
+  $font-size-value: map-get($font-size-map, $size);
+  $font-weight-value: map-get($font-weight-map, $weight);
+  $line-height-size: map-get($font-size-line-height-map, $size);
+  $line-height-value: map-get($font-line-height-map, $line-height-size);
+  font-size: $font-size-value;
+  font-weight: $font-weight-value;
+  line-height: $line-height-value;
+}
+
+// Banner heading
+@mixin banerHeading {
+  @include typography(xl-7, bold);
+  @include screenSize(laptop) {
+    @include typography(xl-6, bold);
+  }
+  @include screenSize(tablet) {
+    @include typography(xl-5, bold);
+  }
+  @include screenSize(phone) {
+    @include typography(xl-4, bold);
+  }
+}
+// Main heading - H1
+@mixin heading-1 {
+  @include typography(xl-4, bold);
+  @include screenSize(phone) {
+    @include typography(xl-3, bold);
+  }
+}
+// Title-1
+@mixin title-1 {
+  @include typography(xl-1, bold);
+  @include screenSize(laptop) {
+    @include typography(xl, bold);
+  }
+  @include screenSize(tablet) {
+    @include typography(xl, bold);
+  }
+}
+// Title-2
+@mixin title-2 {
+  @include typography(xl, bold);
+  @include screenSize(laptop) {
+    @include typography(lg, bold);
+  }
+  @include screenSize(phone) {
+    @include typography(md, bold);
+  }
+}
+// Paragraph
+@mixin paragraph {
+  @include typography(lg, regular);
+  @include screenSize(phone) {
+    @include typography(md, regular);
+  }
+}
+
+// Small-1{
+@mixin small-1 {
+  @include typography(md, semi-bold);
+  @include screenSize(laptop) {
+    @include typography(sm, semi-bold);
+  }
+}
+
+// Small -2
+@mixin small-2 {
+  @include typography(sm, bold);
+}
+
+// Links and buttons font styles
+@mixin link-text {
+  @include typography(lg, bold);
+  @include screenSize(laptop) {
+    @include typography(md, bold);
+  }
+  @include screenSize(tablet) {
+    @include typography(xl, bold);
+  }
+}
+
+// END OF CUSTOM TYPOGRAPHY Mixins
+///////////////////

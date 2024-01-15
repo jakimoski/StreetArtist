@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Vlatko Jakimoski" />
+    <meta name="description" content="Street Artist" />
+    <meta name="keywords" content="Street Artist" />
+    <meta property="og:title" content="Street Artist" />
+    <meta property="og:image" content="./src/assets/Logo.png" />
+    <link rel="icon" type="image/x-icon" href="./src/assets/Logo.png" />
+    <title>Stree Artistt</title>
+    <!-- Chhart.js CDN link -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="main.css" />
+    <!-- Scripts -->
+    <script type="module" src="main.js"></script>
+  </head>
+
+  <body>
+    <!-- Main Navigation -->
+    <header class="header">
+      <div class="header__logo">
+        <a href="#landingPage">
+          <img src="./src/assets/Logo.png" alt="" />
+        </a>
+      </div>
+      <p class="header__title">Street Artist</p>
+      <div class="header__toggle">
+        <img
+          class="header__toggle--artist"
+          src="./src/assets/hamburger.png"
+          alt=""
+        />
+        <a href="#auction">
+          <img
+            class="header__toggle--user"
+            src="./src/assets/auction-fill.png"
+            alt=""
+          />
+        </a>
+      </div>
+      <div class="header__artist-menu">
+        <a class="artist-menu-link" href="#artists">Home</a>
+        <a class="artist-menu-link" href="#artistsItems">Items</a>
+        <a class="artist-menu-link" href="#auction">Auction</a>
+      </div>
+      <!-- <nav class="header__nav--artist">
+        <a href="#landingPage">Landing Page</a>
+        <a href="#visitor">Visitor Home Page</a>
+        <a href="#visitorListing">Visitor Listing</a>
+        <a href="#artists">Artist Home Page</a>
+        <a href="#artistsItems">Artist Items Page</a>
+        <a href="#auction">Auction Page</a>
+      </nav> -->
+    </header>
+
+    <main>
+      <!-- Landing Page -->
+      <section class="page" id="landingPage">
+        <div class="main-wrapper">
+          <img class="logo" src="./src/assets/Logo.png" alt="logo" />
+          <div class="polygons-wrapper">
+            <div class="join join--artist">
+              <div class="join__content join__content--artist">
+                <div class="artist-wrapper">
+                  <p>Join as Artist</p>
+                  <select id="artist-select">
+                    <option
+                      class="choose-opt"
+                      value=""
+                      disabled="true"
+                      selected
+                    >
+                      Choose
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="join join--visitor">
+              <div class="join__content join__content--visitor">
+                <p>Join as Visitor</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Visitor Home Page -->
+      <section class="page visitor-home" id="visitor">
+        <div class="visitor-home-cta">
+          <h1 class="visitor-home-cta__title">Looking for masterpiece?</h1>
+          <a class="btn btn--primary" href="#visitorListing"> Find one now! </a>
+        </div>
+        <!-- Sliders -->
+        <div class="slider">
+          <div class="slider__track slider__track--left">
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img1.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img2.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img3.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img4.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img5.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img6.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img7.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img8.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img9.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img1.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img2.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img7.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img8.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img9.jpg" alt="" />
+            </div>
+          </div>
+          <div class="slider__track slider__track--right">
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img1.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img2.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img3.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img4.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img5.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img6.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img7.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img8.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img9.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img1.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img2.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img7.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img8.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <img src="./src/assets/carousel_img/img9.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+        <!-- End of sliders -->
+        <!-- Carousel-->
+        <div class="visitor-home-carousel">
+          <div class="carousel">
+            <button class="carousel__prev">
+              <img src="./src/assets/Vector 1.png" alt="" />
+            </button>
+            <button class="carousel__next">
+              <img src="./src/assets/Vector 2.png" alt="" />
+            </button>
+            <!-- Slider Items -->
+            <div class="carousel-item">
+              <div class="carousel-item__left">
+                <div class="carousel-card">
+                  <img
+                    class="carousel-card__image"
+                    src="./src/assets/persons/person1.jpg"
+                    alt="Persona"
+                  />
+
+                  <div class="carousel-card__text">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
+                      aliquam, purus sit amet luctus venenatis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item__divider"></div>
+              <div class="carousel-item__right">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
+                  aliquam, purus sit amet luctus venenatis, lectus magna
+                  fringilla urna, porttitor
+                </p>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="carousel-item__left">
+                <div class="carousel-card">
+                  <img
+                    class="carousel-card__image"
+                    src="./src/assets/persons/person2.jpg"
+                    alt="Persona"
+                  />
+
+                  <div class="carousel-card__text">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
+                      aliquam, purus sit amet luctus venenatis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item__divider"></div>
+              <div class="carousel-item__right">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
+                  aliquam, purus sit amet luctus venenatis, lectus magna
+                  fringilla urna, porttitor
+                </p>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="carousel-item__left">
+                <div class="carousel-card">
+                  <img
+                    class="carousel-card__image"
+                    src="./src/assets/persons/person3.jpg"
+                    alt="Persona"
+                  />
+
+                  <div class="carousel-card__text">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
+                      aliquam, purus sit amet luctus venenatis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item__divider"></div>
+              <div class="carousel-item__right">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
+                  aliquam, purus sit amet luctus venenatis, lectus magna
+                  fringilla urna, porttitor
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Visitor Listing Page -->
+      <section class="page" id="visitorListing">
+        <!-- All cards -->
+        <div id="vistorListingCardContainer"></div>
+        <div class="filter-icon">
+          <img src="./src/assets/Group 14.png" alt="" />
+        </div>
+        <!-- Filter for items cards -->
+        <div class="filter-form">
+          <div class="filter-form__inner">
+            <button class="close-btn">
+              <img src="./src/assets/Close_Icon.png" alt="close filters icon" />
+            </button>
+            <h1>Filter by</h1>
+            <div class="filter-form__box">
+              <label for="title-filter">By Item Title</label>
+              <input type="text" id="title-filter" placeholder="Item Title" />
+            </div>
+
+            <div class="filter-form__box">
+              <label for="artist-filter">By Artist</label>
+              <select id="artist-filter" placeholder="Choose">
+                <option value="" disabled selected>Choose</option>
+              </select>
+            </div>
+
+            <div class="filter-form__box">
+              <p>By Price</p>
+              <div class="prices">
+                <label for="min-price"
+                  >Min:
+                  <input type="number" id="min-price" placeholder="Price" />
+                </label>
+
+                <label for="max-price"
+                  >Max:
+                  <input type="number" id="max-price" placeholder="Price" />
+                </label>
+              </div>
+            </div>
+
+            <div class="filter-form__box">
+              <label for="type-filer">By Type</label>
+              <select id="type-filer" placeholder="Choose">
+                <option value="" disabled selected>Choose</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="apply-btn">
+            <img src="./src/assets/Group 15.png" alt="apply button" />
+          </button>
+        </div>
+      </section>
+      <!-- Artist Home Page -->
+      <section class="page artist-home" id="artists">
+        <div class="artist-home-total">
+          <div class="artist-home-total__sold">
+            <h4>Total Items Sold</h4>
+            <p>12/35</p>
+          </div>
+          <div class="artist-home-total__income">
+            <h4>Total Income</h4>
+            <p>1700</p>
+          </div>
+        </div>
+        <div class="artitst-home-auction-item"></div>
+        <div class="artist-home-chart">
+          <h2>Display my income for last</h2>
+          <div class="artist-home-chart__select">
+            <button class="btn btn--primary">7 Days</button>
+            <button class="btn">14 Days</button>
+            <button class="btn">30 Days</button>
+          </div>
+          <canvas id="myChart"></canvas>
+        </div>
+      </section>
+      <!-- Artist Items Page -->
+      <section class="page" id="artistsItems">
+        <div class="add-new-item">
+          <button class="add-new-item__btn">+ Add new item</button>
+        </div>
+        <div class="artist-items-container"></div>
+      </section>
+      <!-- Artist - New/Edit Item-->
+      <section id="edit-new-item">
+        <div class="new-item-wrapper">
+          <div class="new-item-inner">
+            <div class="title-checkbox">
+              <h1>Add new Item</h1>
+              <div class="is-published">
+                <label for="is_published">Is published</label>
+                <input checked type="checkbox" id="is_published" />
+              </div>
+            </div>
+
+            <div class="new-item_title">
+              <label for="new-item_title">Title</label>
+              <input type="text" id="new-item_title" />
+            </div>
+
+            <div class="new-item_desc">
+              <label for="new-item_desc">Description</label>
+              <textarea id="new-item_desc"></textarea>
+            </div>
+
+            <div class="new-item_type-price">
+              <div class="new-item_type">
+                <label for="new-item_type">Type</label>
+                <select id="new-item_type">
+                  <option value="" disabled selected>Choose</option>
+                </select>
+              </div>
+              <div class="new-item_price">
+                <label for="new-item_price">Price</label>
+                <input type="number" id="new-item_price" />
+              </div>
+            </div>
+
+            <div class="new-item_img-url">
+              <label for="new-item_img-url">Image URL</label>
+              <input type="text" id="new-item_img-url" />
+            </div>
+            <p class="or-text">or</p>
+            <div class="add-image">
+              <div class="displayed-img-wrapper">
+                <div class="img-and-del-btn">
+                  <img src="" id="new-img-displayed" />
+                  <button class="del-img-btn">Take a new picture</button>
+                </div>
+              </div>
+              <a href="#artists/capture-image" class="take-snapshot">
+                <img src="./src/assets/fa-solid_camera.png" alt="" />
+                <p>Take a snapshot</p>
+              </a>
+            </div>
+            <div class="add-cancel-btns">
+              <button class="add-btn">Add New Item</button>
+              <button class="cancel-btn">Cancel</button>
+            </div>
+          </div>
+        </div>
+        <div class="alert-screen-overlay"></div>
+        <div class="alert-popup">
+          <p class="alert-text">Please fill out all of the fields</p>
+          <button class="alert-read-btn">Got it!</button>
+        </div>
+      </section>
+      <!-- Artist - Capture Image Popup -->
+      <section id="capture-image">
+        <div class="capture-window-wrapper">
+          <video src="" id="video" height="657" autoplay></video>
+          <canvas id="captureCanvas" width="720" height="420"></canvas>
+          <button id="captureImageBtn">
+            <img
+              src="./src/assets/fa-solid_camera.png"
+              alt="button to capture image"
+            />
+          </button>
+        </div>
+      </section>
+      <!-- Auction Page -->
+      <section class="page" id="auction">
+        Auction Page
+
+        <div>Image on Acution</div>
+
+        <div id="bidding">
+          <input type="text" id="biddingInput" />
+          <button id="bidBtn">Bid</button>
+
+          <ul id="biddingHistory">
+            <!-- <li class="mine">500</li>
+                <li class="bidder" style="margin-left: 300px">550</li> -->
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
