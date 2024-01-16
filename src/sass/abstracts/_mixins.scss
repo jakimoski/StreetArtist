@@ -109,7 +109,7 @@ $font-size-map: (
   xl-5: rem-calc(70),
   xl-4: rem-calc(48),
   xl-3: rem-calc(36),
-  xl-2: rem-calc(24),
+  xl-2: rem-calc(26),
   xl-1: rem-calc(22),
   xl: rem-calc(18),
   lg: rem-calc(16),
@@ -157,44 +157,38 @@ $font-size-line-height-map: (
   line-height: $line-height-value;
 }
 
-// Banner heading
-@mixin banerHeading {
-  @include typography(xl-7, bold);
-  @include screenSize(laptop) {
-    @include typography(xl-6, bold);
-  }
-  @include screenSize(tablet) {
-    @include typography(xl-5, bold);
-  }
-  @include screenSize(phone) {
-    @include typography(xl-4, bold);
-  }
-}
 // Main heading - H1
 @mixin heading-1 {
-  @include typography(xl-4, bold);
+  @include typography(xl-4, light);
   @include screenSize(phone) {
-    @include typography(xl-3, bold);
+    @include typography(xl-3, light);
   }
 }
-// Title-1
-@mixin title-1 {
-  @include typography(xl-1, bold);
+// h2
+@mixin heading-2 {
+  @include typography(xl-1, light);
   @include screenSize(laptop) {
-    @include typography(xl, bold);
+    @include typography(xl, light);
   }
   @include screenSize(tablet) {
-    @include typography(xl, bold);
+    @include typography(xl, light);
   }
 }
-// Title-2
-@mixin title-2 {
+// h3
+@mixin heading-3 {
   @include typography(xl, bold);
   @include screenSize(laptop) {
     @include typography(lg, bold);
   }
   @include screenSize(phone) {
     @include typography(md, bold);
+  }
+}
+// Banner
+@mixin banner {
+  @include typography(xl-3, bold);
+  @include screenSize(laptop) {
+    @include typography(xl-2, bold);
   }
 }
 // Paragraph
@@ -215,7 +209,7 @@ $font-size-line-height-map: (
 
 // Small -2
 @mixin small-2 {
-  @include typography(sm, bold);
+  @include typography(md, light);
 }
 
 // Links and buttons font styles

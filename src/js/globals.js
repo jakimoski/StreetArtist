@@ -8,8 +8,12 @@ let itemId; //Curent id of the artist item ,that should be edited or removed
 let auctionTimer; // There should be 2min timer for auctions set to locall storage
 
 // Set All Artist Items List in locall storage
-localStorage.setItem("itemsList", JSON.stringify(items));
-export let itemsList = JSON.parse(localStorage.getItem("itemsList") ?? "");
+export let itemsList;
+if (!JSON.parse(localStorage.getItem("itemsList"))) {
+  localStorage.setItem("itemsList", JSON.stringify(items));
+} else {
+  itemsList = JSON.parse(localStorage.getItem("itemsList") ?? "");
+}
 
 // Get Current Artist
 export function getCurrentArtist() {

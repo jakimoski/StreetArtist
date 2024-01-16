@@ -91,7 +91,7 @@
       <section class="page visitor-home" id="visitor">
         <div class="visitor-home-cta">
           <h1 class="visitor-home-cta__title">Looking for masterpiece?</h1>
-          <a class="btn btn--primary" href="#visitorListing"> Find one now! </a>
+          <a class="btn btn--banner" href="#visitorListing"> Find one now! </a>
         </div>
         <!-- Sliders -->
         <div class="slider">
@@ -336,20 +336,20 @@
         <div class="artist-home-total">
           <div class="artist-home-total__sold">
             <h4>Total Items Sold</h4>
-            <p>12/35</p>
+            <p id="total-items-sold">12/35</p>
           </div>
           <div class="artist-home-total__income">
             <h4>Total Income</h4>
-            <p>1700</p>
+            <p id="total-items-income">1700</p>
           </div>
         </div>
         <div class="artitst-home-auction-item"></div>
         <div class="artist-home-chart">
           <h2>Display my income for last</h2>
           <div class="artist-home-chart__select">
-            <button class="btn btn--primary">7 Days</button>
-            <button class="btn">14 Days</button>
-            <button class="btn">30 Days</button>
+            <button class="btn btn--primary chart-data-7">7 Days</button>
+            <button class="btn btn--primary chart-data-14">14 Days</button>
+            <button class="btn btn--primary chart-data-30">30 Days</button>
           </div>
           <canvas id="myChart"></canvas>
         </div>
@@ -362,9 +362,9 @@
         <div class="artist-items-container"></div>
       </section>
       <!-- Artist - New/Edit Item-->
-      <section id="edit-new-item">
-        <div class="new-item-wrapper">
-          <div class="new-item-inner">
+      <section class="page" id="edit-new-item">
+        <div class="edit-new-item-wrapper">
+          <div class="edit-new-item-inner">
             <div class="title-checkbox">
               <h1>Add new Item</h1>
               <div class="is-published">
@@ -408,7 +408,7 @@
                   <button class="del-img-btn">Take a new picture</button>
                 </div>
               </div>
-              <a href="#artists/capture-image" class="take-snapshot">
+              <a href="#capture-image" class="take-snapshot">
                 <img src="./src/assets/fa-solid_camera.png" alt="" />
                 <p>Take a snapshot</p>
               </a>

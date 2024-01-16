@@ -49,8 +49,7 @@
       cursor: pointer;
       p {
         font-family: "Reenie Beanie", cursive;
-        font-weight: 500;
-        font-size: 45px;
+        @include heading-1;
       }
       &:hover {
         -moz-transform: scale(1.05) translate(0px, -5px);
@@ -97,8 +96,7 @@
   background: none;
   border: 1px solid $color-primary;
   color: $color-primary;
-  font-weight: 300;
-  font-size: 13px;
+  @include small-2;
   outline: none;
   transition: all 0.03s ease;
   cursor: pointer;
@@ -121,18 +119,22 @@
   &-cta {
     background: url("./src/assets/Bricks.png") center no-repeat;
     background-size: cover;
-    min-height: 20vh;
-    padding: rem-calc(20);
+    min-height: 25vh;
+    padding: $gutter-base-l;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+    @include screenSize(tablet) {
+      padding: $gutter-base;
+      width: 95%;
+    }
     &__title {
+      text-wrap: pretty;
       color: $color-primary;
       font-family: Roboto;
-      font-size: 30px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
+      @include banner;
     }
   }
 }
@@ -146,8 +148,6 @@
   display: flex;
   gap: $gutter-base;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
   padding: $gutter-base-l;
   @include screenSize(phone) {
     padding: $gutter-base 0;
@@ -184,8 +184,7 @@
     text-align: center;
     h4 {
       font-family: Roboto;
-      font-size: 18px;
-      font-weight: 300;
+      @include heading-2;
     }
     p {
       font-family: Roboto;
@@ -194,30 +193,34 @@
     }
     &__sold {
       background-color: $color-primary;
-      flex-basis: 45%;
+      @include flex-basis("50%", m);
       padding: $gutter-base-s;
     }
     &__income {
       background-color: $color-primary;
-      flex-basis: 45%;
+      @include flex-basis("50%", m);
       padding: $gutter-base-s;
+    }
+    &-auction-item {
+      flex-basis: 100%;
+      padding: $gutter-base-s;
+      background-color: $color-secondary;
     }
   }
   &-chart {
     background-color: $background-light;
-    padding: $gutter-base-l $gutter-base;
+    padding: $gutter-base-l $gutter-base-l;
     h2 {
       font-family: Roboto;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 300;
+      @include heading-2;
       color: $color-primary;
       margin-bottom: $gutter-base;
     }
     &__select {
       display: flex;
+      text-align: center;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-evenly;
       margin-bottom: $gutter-base-l;
     }
   }
@@ -229,11 +232,11 @@
 }
 .artist-items-container {
   display: flex;
-  gap: $gutter-base;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: $gutter-base-l;
+  width: 100%;
   @include screenSize(phone) {
     padding: $gutter-base 0;
   }

@@ -2,6 +2,9 @@ import { items } from "./data/data.js";
 import { getCurrentArtist } from "./globals.js";
 import { formatDate, generateDateLabels } from "./utils/dates.js";
 
+const totalItemSold = document.querySelector("#total-items-sold");
+const totalItemsIncome = document.querySelector("#total-items-income");
+
 let myChart;
 
 export function initArtistHomePage() {
@@ -12,7 +15,17 @@ export function initArtistHomePage() {
   const artistItems = items.filter((item) => item.artist === currentArtist);
 
   // Get all sold curent artist items
-  const soldArtistItems = artistItems.filter((item) => !!item.priceSold);
+  const soldArtistItems = artistItems.filter((item) => item.priceSold);
+  console.log(artistItems);
+  console.log(soldArtistItems);
+  // Get total sum of all sold items
+  const totalIncome = soldArtistItems.reduce(
+    (acc, item) => acc + item.priceSold,
+    0
+  );
+  // Set the value of total items sold and total income in dom
+  totalItemSold.innerText = `${soldArtistItems.length}/${artistItems.length}`;
+  totalItemsIncome.innerText = totalIncome;
 
   // Set how many days to be shown in chart
   const labels = generateDateLabels(7);
@@ -65,7 +78,7 @@ export function initArtistHomePage() {
         fill: false,
         backgroundColor: ["#A16A5E"],
         hoverBackgroundColor: ["#D44C2E"],
-        barThickness: 8,
+        barThickness: 6,
         borderWidth: 1,
       },
     ],

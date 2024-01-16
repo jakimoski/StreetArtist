@@ -36,7 +36,8 @@ export function artistNavigation() {
   artistToggle.addEventListener("click", () => {
     if (artistMenu.classList.contains("show-menu")) {
       artistMenu.classList.remove("show-menu");
-    } else if (!artistMenu.classList.contains("show-menu")) {
+    }
+    if (!artistMenu.classList.contains("show-menu")) {
       artistMenu.classList.add("show-menu");
     }
     return;

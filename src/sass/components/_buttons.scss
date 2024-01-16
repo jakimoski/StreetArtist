@@ -3,16 +3,24 @@
 
 .btn {
   color: $color-white;
+  display: inline-block;
   border: none;
   outline: none;
   border-radius: 2px;
   font-family: "Roboto", sans-serif;
+  text-decoration: none;
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
+  text-wrap: nowrap;
   line-height: 14px;
-  padding: 6.5px 17.5px;
+  padding: rem-calc(7) rem-calc(18);
   cursor: pointer;
+  &--banner {
+    background-color: $color-primary;
+    padding: rem-calc(10) rem-calc(20);
+    font-size: 16px;
+  }
   &--primary {
     background-color: $color-primary;
   }
@@ -22,11 +30,13 @@
   &--blue {
     background-color: $color-blue;
   }
-  &--light {
+  &--light,
+  &--unpublish {
     background-color: $background-light;
     color: $color-primary;
   }
-  &--green {
+
+  &--publish {
     background-color: $color-green;
   }
   &:hover {
