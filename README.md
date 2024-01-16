@@ -1,13 +1,18 @@
 # Street Artist - project02 by Vlatko Jakimoski
 
-## About
+## Project Goal
 
-For this project i had to build a two page website Barinster Lasbs where all projects of Brainster students will be presented. Brainster Labs serves as a showcase of all that i have learned in the first part of the course, CSS and HTML but also to test my knowlege of JavaScript.
-For compleating this project i used Html, SCSS and JavaScript which was a little chalenging for me beacuse this was the first time i used JS on a project and i wanted to complete all tasks that where given and also build the project as best as i can.
+To create web space for every street artist that will allow them to be able to track their
+income, and to have a place on the web where they can showcase their masterpieces.
+
+## Project Vision
+
+To help young artists to express themselves through modern technology and to give them
+the opportunity to be reachable worldwide.
 
 ## Live Preview
 
-To see live preview of the project [Click Here](https://jakimoski.github.io/Brainster_Labs/ "Brainster Labs")
+To see live preview of the project [Click Here](https://jakimoski.github.io/StreetArtist/ "Street Artist")
 
 ## Getting Started
 
