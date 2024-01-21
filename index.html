@@ -15,7 +15,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="main.css" />
     <!-- Scripts -->
-    <script type="module" src="main.js"></script>
+    <script defer type="module" src="main.js"></script>
   </head>
 
   <body>
@@ -46,14 +46,6 @@
         <a class="artist-menu-link" href="#artistsItems">Items</a>
         <a class="artist-menu-link" href="#auction">Auction</a>
       </div>
-      <!-- <nav class="header__nav--artist">
-        <a href="#landingPage">Landing Page</a>
-        <a href="#visitor">Visitor Home Page</a>
-        <a href="#visitorListing">Visitor Listing</a>
-        <a href="#artists">Artist Home Page</a>
-        <a href="#artistsItems">Artist Items Page</a>
-        <a href="#auction">Auction Page</a>
-      </nav> -->
     </header>
 
     <main>
@@ -66,16 +58,7 @@
               <div class="join__content join__content--artist">
                 <div class="artist-wrapper">
                   <p>Join as Artist</p>
-                  <select id="artist-select">
-                    <option
-                      class="choose-opt"
-                      value=""
-                      disabled="true"
-                      selected
-                    >
-                      Choose
-                    </option>
-                  </select>
+                  <select id="artist-select"></select>
                 </div>
               </div>
             </div>
@@ -342,8 +325,13 @@
             <h4>Total Income</h4>
             <p id="total-items-income">1700</p>
           </div>
+          <div class="artist-home-total__auction">
+            <h4>Live Auctioning Item</h4>
+            <p id="current-bid-artisit-home">0</p>
+            <h4>Curent Bid</h4>
+          </div>
         </div>
-        <div class="artitst-home-auction-item"></div>
+
         <div class="artist-home-chart">
           <h2>Display my income for last</h2>
           <div class="artist-home-chart__select">
@@ -359,74 +347,91 @@
         <div class="add-new-item">
           <button class="add-new-item__btn">+ Add new item</button>
         </div>
-        <div class="artist-items-container"></div>
+        <div class="artist-items-wrapper">
+          <div class="artist-items-container"></div>
+        </div>
       </section>
       <!-- Artist - New/Edit Item-->
-      <section class="page" id="edit-new-item">
-        <div class="edit-new-item-wrapper">
-          <div class="edit-new-item-inner">
-            <div class="title-checkbox">
-              <h1>Add new Item</h1>
-              <div class="is-published">
-                <label for="is_published">Is published</label>
-                <input checked type="checkbox" id="is_published" />
+      <section class="page edit-new-item" id="edit-new-item">
+        <div class="edit-new-item__wrapper">
+          <div class="edit-new-item__inner">
+            <div class="edit-new-item__title-checkbox">
+              <h1 id="is-edit-title">Add new Item</h1>
+              <div class="checkbox-wrapper">
+                <label for="is-published">Is published</label>
+                <input type="checkbox" id="is-published" />
+                <label for="is-published">
+                  <svg viewBox="0,0,50,50">
+                    <path d="M5 30 L 20 45 L 45 5"></path>
+                  </svg>
+                </label>
               </div>
             </div>
 
-            <div class="new-item_title">
-              <label for="new-item_title">Title</label>
-              <input type="text" id="new-item_title" />
+            <div class="edit-new-item__title">
+              <label for="edit-new-item-title">Title</label>
+              <input type="text" id="edit-new-item-title" />
             </div>
 
-            <div class="new-item_desc">
-              <label for="new-item_desc">Description</label>
-              <textarea id="new-item_desc"></textarea>
+            <div class="edit-new-item__desc">
+              <label for="edit-new-item-desc">Description</label>
+              <textarea id="edit-new-item-desc"></textarea>
             </div>
 
-            <div class="new-item_type-price">
-              <div class="new-item_type">
-                <label for="new-item_type">Type</label>
-                <select id="new-item_type">
+            <div class="edit-new-item__type-price">
+              <div class="edit-new-item__type">
+                <label for="edit-new-item-type">Type</label>
+                <select id="edit-new-item-type">
                   <option value="" disabled selected>Choose</option>
                 </select>
               </div>
-              <div class="new-item_price">
-                <label for="new-item_price">Price</label>
-                <input type="number" id="new-item_price" />
+              <div class="edit-new-item__price">
+                <label for="edit-new-item-price">Price</label>
+                <input type="number" id="edit-new-item-price" />
               </div>
             </div>
 
-            <div class="new-item_img-url">
-              <label for="new-item_img-url">Image URL</label>
-              <input type="text" id="new-item_img-url" />
+            <div class="edit-new-item__img-url">
+              <label for="edit-new-item-img-url">Image URL</label>
+              <input type="text" id="edit-new-item-img-url" />
             </div>
             <p class="or-text">or</p>
+
             <div class="add-image">
-              <div class="displayed-img-wrapper">
-                <div class="img-and-del-btn">
-                  <img src="" id="new-img-displayed" />
-                  <button class="del-img-btn">Take a new picture</button>
+              <div class="add-image__displayed-img-wrapper">
+                <div class="add-image__img">
+                  <img src="" id="new-img-displayed" alt="Displayed Image" />
                 </div>
               </div>
-              <a href="#capture-image" class="take-snapshot">
-                <img src="./src/assets/fa-solid_camera.png" alt="" />
+              <a href="#capture-image" class="add-image__take-snapshot">
+                <img
+                  id="capture-img"
+                  src="./src/assets/fa-solid_camera.png"
+                  alt="Camera Icon"
+                />
                 <p>Take a snapshot</p>
               </a>
             </div>
-            <div class="add-cancel-btns">
-              <button class="add-btn">Add New Item</button>
-              <button class="cancel-btn">Cancel</button>
+            <div class="edit-new-item__action">
+              <button class="btn btn--secondary add-save-btn">
+                Add New Item
+              </button>
+              <button class="btn btn--light-secondary cancel-btn">
+                Cancel
+              </button>
             </div>
           </div>
         </div>
-        <div class="alert-screen-overlay"></div>
+        <!-- <div class="alert-screen-overlay"></div> -->
         <div class="alert-popup">
-          <p class="alert-text">Please fill out all of the fields</p>
-          <button class="alert-read-btn">Got it!</button>
+          <h5 class="alert-popup__message">
+            Please fill out all of the fields
+          </h5>
+          <button class="btn btn--alert">Got it!</button>
         </div>
       </section>
       <!-- Artist - Capture Image Popup -->
-      <section id="capture-image">
+      <section class="page" id="capture-image">
         <div class="capture-window-wrapper">
           <video src="" id="video" height="657" autoplay></video>
           <canvas id="captureCanvas" width="720" height="420"></canvas>
@@ -440,18 +445,26 @@
       </section>
       <!-- Auction Page -->
       <section class="page" id="auction">
-        Auction Page
-
-        <div>Image on Acution</div>
-
-        <div id="bidding">
-          <input type="text" id="biddingInput" />
-          <button id="bidBtn">Bid</button>
-
-          <ul id="biddingHistory">
-            <!-- <li class="mine">500</li>
-                <li class="bidder" style="margin-left: 300px">550</li> -->
-          </ul>
+        <div class="auction">
+          <div class="auction-items-wrapper"></div>
+          <div class="bidding-timer">
+            <p class="bidding-timer__title">Auction ends in:</p>
+            <p class="bidding-timer__time"></p>
+          </div>
+          <div class="auction-bidding-wrapper" id="bidding">
+            <div class="auction-bidding-wrapper__curent">
+              <h3 class="highest-bid-title">Current Highest Bid:</h3>
+              <p class="highest-bid-price" id="highest-auction-bid">
+                No bids at the moment
+              </p>
+              <ul id="biddingHistory"></ul>
+            </div>
+            <div class="auction-bidding-wrapper__input">
+              <label for="biddingInput">Place a Bid</label>
+              <input type="number" id="biddingInput" />
+              <button class="btn btn--primary" id="bidBtn">Bid</button>
+            </div>
+          </div>
         </div>
       </section>
     </main>

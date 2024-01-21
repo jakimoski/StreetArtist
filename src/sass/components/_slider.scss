@@ -24,8 +24,8 @@
   }
 
   .slide {
-    height: 120px;
-    width: 250px;
+    height: rem-calc(120);
+    width: rem-calc(250);
     padding: 0 $gutter-base;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
@@ -34,8 +34,8 @@
     }
     img {
       object-fit: cover;
-      height: 120px;
-      width: 250px;
+      height: rem-calc(120);
+      width: rem-calc(250);
       box-shadow: -7px -5px 10px rgba(0, 0, 0, 0.17);
       -webkit-box-shadow: -7px -5px 10px rgba(0, 0, 0, 0.17);
       -moz-box-shadow: -7px -5px 10px rgba(0, 0, 0, 0.17);

@@ -1,9 +1,12 @@
 export const initArtistCaptureCamera = () => {
   const liveStreamVideo = document.querySelector("#video");
   const captureStreamCanvas = document.querySelector("#captureCanvas");
-  const capturedImageImg = document.querySelector("#capturedImage");
-
+  const capturedImageImg = document.querySelector("#new-img-displayed");
   const captureImageBtn = document.querySelector("#captureImageBtn");
+  const capturedImgWrapeer = document.querySelector(
+    ".add-image__displayed-img-wrapper"
+  );
+  const editNewImgUrl = document.getElementById("edit-new-item-img-url");
 
   // navigor MDN
   navigator.mediaDevices
@@ -29,9 +32,13 @@ export const initArtistCaptureCamera = () => {
   captureImageBtn.addEventListener("click", function () {
     const ctx = captureStreamCanvas.getContext("2d");
     ctx.drawImage(liveStreamVideo, 0, 0);
-
     const imgUrl = captureStreamCanvas.toDataURL("image/png");
-    console.log(imgUrl);
+
     capturedImageImg.src = imgUrl;
+    capturedImgWrapeer.style = "display:block";
+    location.hash = "#edit-new-item";
+    editNewImgUrl.value = imgUrl;
+
+    liveStreamVideo.srcObject.getTracks().forEach((track) => track.stop());
   });
 };

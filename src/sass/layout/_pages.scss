@@ -4,7 +4,7 @@
 .page {
   display: none;
   min-height: 100vh;
-  padding-top: 100px;
+  padding-top: rem-calc(100);
   background-color: $background-light;
   overflow: hidden;
 }
@@ -181,35 +181,55 @@
     align-items: center;
     justify-content: space-between;
     color: $color-white;
+    flex-wrap: wrap;
     text-align: center;
     h4 {
       font-family: Roboto;
       @include heading-2;
+      color: $text-color-white;
     }
     p {
       font-family: Roboto;
-      font-size: 48px;
+      font-size: rem-calc(48);
       font-weight: 500;
+      @include screenSize(tablet) {
+        font-size: rem-calc(36);
+      }
     }
     &__sold {
       background-color: $color-primary;
       @include flex-basis("50%", m);
       padding: $gutter-base-s;
+      @include screenSize(phone) {
+        padding: $gutter-base-xs;
+        @include flex-basis("50%", s);
+      }
     }
     &__income {
       background-color: $color-primary;
       @include flex-basis("50%", m);
       padding: $gutter-base-s;
+      @include screenSize(phone) {
+        padding: $gutter-base-xs;
+        @include flex-basis("50%", s);
+      }
     }
-    &-auction-item {
+    &__auction {
+      display: none;
+      background-color: $color-secondary;
       flex-basis: 100%;
       padding: $gutter-base-s;
-      background-color: $color-secondary;
+      text-align: center;
+      margin-top: $gutter-base;
     }
   }
+
   &-chart {
     background-color: $background-light;
     padding: $gutter-base-l $gutter-base-l;
+    @include screenSize(phone) {
+      padding: $gutter-base-s;
+    }
     h2 {
       font-family: Roboto;
       @include heading-2;
@@ -226,20 +246,22 @@
   }
 }
 
-// Artist items
+// Artist items Page
 #artistsItems {
   background-color: $background-normal;
+}
+.artist-items-wrapper {
+  padding: $gutter-base-l;
+  @include screenSize(phone) {
+    padding: $gutter-base 0;
+  }
 }
 .artist-items-container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  padding: $gutter-base-l;
-  width: 100%;
-  @include screenSize(phone) {
-    padding: $gutter-base 0;
-  }
+  justify-content: space-evenly;
+  gap: $gutter-base;
 }
 
 .add-new-item {
@@ -249,7 +271,6 @@
   align-items: center;
   justify-content: center;
   padding: $gutter-base;
-
   background-color: $background-light;
   margin-bottom: $gutter-base;
   @include screenSize(phone) {
@@ -267,5 +288,133 @@
       width: 95%;
       padding: $gutter-base $gutter-base-l;
     }
+  }
+}
+// Edit-New Items Page
+#edit-new-item {
+  background-color: $color-primary;
+}
+// Auction Pages
+#auction {
+  display: flex;
+  flex-direction: column;
+}
+
+.bidding-timer {
+  flex-basis: 100%;
+  text-align: center;
+  padding: $gutter-base;
+  font-size: 20px;
+  border-bottom: 2px solid $color-primary;
+  &__title {
+    color: $color-primary;
+  }
+  &__time {
+    font-size: rem-calc(38);
+    color: $color-secondary;
+  }
+}
+
+.auction-bidding-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: $gutter-base;
+  @include screenSize(phone) {
+    flex-wrap: wrap-reverse;
+  }
+
+  &__input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-block: $gutter-base;
+    border-bottom: 2px solid $color-primary;
+    flex-basis: 50%;
+    @include screenSize(phone) {
+      flex-basis: 100%;
+    }
+    label {
+      flex-basis: 100%;
+      font-size: rem-calc(22);
+      text-align: center;
+      margin-bottom: $gutter-base-s;
+      color: $color-primary;
+    }
+    input {
+      outline: none;
+      padding: rem-calc(5);
+      margin-right: rem-calc(10);
+      border-color: $color-primary;
+    }
+    button {
+      outline: none;
+      padding: rem-calc(10) rem-calc(20);
+      font-size: rem-calc(18);
+    }
+  }
+  &__curent {
+    background-color: $color-primary;
+    color: $background-light;
+    padding-block: $gutter-base;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 50%;
+
+    @include screenSize(phone) {
+      flex-basis: 100%;
+    }
+    .highest-bid-title {
+      font-size: rem-calc(22);
+      text-align: center;
+      margin-bottom: $gutter-base-xs;
+    }
+    .highest-bid-price {
+      background-color: $background-light;
+      color: $color-primary;
+      padding: rem-calc(10) rem-calc(30);
+      font-size: rem-calc(18);
+      width: 80%;
+      text-align: center;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      width: 100%;
+      margin-bottom: 0;
+      li {
+        padding: rem-calc(10);
+        text-align: left;
+
+        &::before {
+          content: "-";
+        }
+        &.mine {
+          background-color: $background-normal;
+          color: $color-primary;
+          text-align: left;
+        }
+        &.bidder {
+          background-color: $background-gray;
+          color: $text-color-base;
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+.no-items-box {
+  @include absCenter;
+  &__mesagge {
+    color: $color-primary;
+    text-align: center;
+    text-wrap: pretty;
+    @include heading-1;
   }
 }

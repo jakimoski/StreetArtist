@@ -1,57 +1,38 @@
-import { items, itemTypes } from "./data/data.js";
+import { getItemsList } from "./utils/localstorage.js";
 
 const container = document.querySelector("#vistorListingCardContainer");
 const filterOpen = document.querySelector(".filter-icon");
 const filterForm = document.querySelector(".filter-form");
 const filterApply = document.querySelector(".apply-btn");
 const filterClose = document.querySelector(".close-btn");
-const artistFilter = document.querySelector("#artist-filter");
-const typeFilter = document.querySelector("#type-filer");
-
-// Get all artist and dispplay in select
-async function getFilterUsers() {
-  try {
-    const res = await fetch("https://jsonplaceholder.typicode.com/users");
-    const users = await res.json();
-
-    const userList = (users ?? []).map((user) => user.name);
-
-    // Display all artist in select
-    userList.forEach((user) => {
-      if (!(artistFilter.children.length > userList.length))
-        artistFilter.innerHTML += `<option value="${user}">${user}</option>`;
-    });
-  } catch (error) {
-    console.log(error);
-  }
-}
 
 export function initVisitorListing() {
-  const publishedItems = items.filter((item) => item.isPublished);
-  getFilterUsers();
+  let allItems = getItemsList();
 
-  itemTypes.forEach((type) => {
-    typeFilter.innerHTML += `<option value="${type}">${type}</option>`;
-  });
+  const publishedItems = allItems.filter((item) => item.isPublished);
 
   publishedItems.forEach(renderCard);
 
-  // Aplay filter
+  // Apply filter
   filterApply.addEventListener("click", function () {
-    const title = document.querySelector("#title-filter").value;
-    const artist = document.querySelector("#artist-filter").value;
-    const minPrice = document.querySelector("#min-price").value;
-    const maxPrice = document.querySelector("#max-price").value;
-    const type = document.querySelector("#type-filer").value;
+    const title = getValue("#title-filter");
+    const artist = getValue("#artist-filter");
+    const minPrice = parseFloat(getValue("#min-price"));
+    const maxPrice = parseFloat(getValue("#max-price"));
+    const type = getValue("#type-filter");
 
     const filtered = publishedItems.filter(
       (item) =>
-        (title ? item.title.includes(title) : true) &&
-        (artist ? item.artist === artist : true) &&
-        (minPrice ? item.price >= minPrice : true) &&
-        (maxPrice ? item.price <= maxPrice : true) &&
-        (type ? item.type === type : true)
+        (!title || item.title.includes(title)) &&
+        (!artist || item.artist === artist) &&
+        (isNaN(minPrice) || item.price >= minPrice) &&
+        (isNaN(maxPrice) || item.price <= maxPrice) &&
+        (!type || item.type === type)
     );
+    // Utility function to get the value of an element by ID
+    function getValue(id) {
+      return document.querySelector(id)?.value.trim();
+    }
 
     container.innerHTML = "";
     filtered.forEach(renderCard);
@@ -81,7 +62,14 @@ function renderCard(item, idx) {
     <div class="listing-card__content">
       <div class="listing-card__info">
         <h4 class="listing-card__artist">${item.artist}</h4>
-        <span class="listing-card__price listing-card__price--${isDarkPrice}">${item.price}$</span>
+        <span class="listing-card__price listing-card__price--${isDarkPrice}">${item.price.toLocaleString(
+    "mk",
+    {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0,
+    }
+  )}</span>
       </div>
       <h5 class="listing-card__title">${item.title}</h5>
       <p class="listing-card__desc">${item.description}</p>
